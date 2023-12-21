@@ -231,6 +231,7 @@ number:
 - platform: rego1000
   name: Hysterisis min
   rego_variable: $HEATING_1A_DIFF_MIN
+  internal: true
   unit_of_measurement: °C
   min_value: 2
   max_value: 30
@@ -239,6 +240,7 @@ number:
 - platform: rego1000
   name: Hysterisis max
   rego_variable: $HEATING_1A_DIFF_MAX
+  internal: true
   unit_of_measurement: °C
   min_value: 2
   max_value: 30
@@ -247,6 +249,7 @@ number:
 - platform: rego1000
   name: Hysterisis time factor
   rego_variable: $HEATING_1A_DIFF_CONST
+  internal: true
   min_value: 10
   max_value: 30
   step: 1
@@ -254,6 +257,7 @@ number:
 - platform: rego1000
   name: Room dial range
   rego_variable: $ROOM_DIAL_RANGE
+  internal: true
   min_value: 0
   max_value: 6
   step: 1
