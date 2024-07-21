@@ -229,7 +229,22 @@ sensor:
       return id(energy_consumption_add_heating).state + id(energy_consumption_add_dhw).state;
     update_interval: 60s
 
+  # Summary alarm sensor
+  - platform: rego1000
+    id: summary_alarm
+    name: Summary alarm
+    rego_variable: $HW_SUMMARY_ALARM
 
+  # Sensor used for message evaluation
+  - platform: rego1000
+    id: message_evaluation_sensor
+    name: Message evaluation sensor
+    rego_variable: $ADDITIONAL_ELECTRIC_SIGNAL_OUT_2
+  
+  # Esphome uptime sensor
+  - platform: uptime
+    name: Uptime Sensor
+    
 binary_sensor:
 - platform: rego1000
   name: "Heat carrier pump"
