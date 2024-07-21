@@ -83,5 +83,8 @@
     "VARNINGAR",
     "WEEKPROGRAM",
     "XDHW"
-  ]
+  ],
+  "files.associations": {
+    "*.yaml": "esphome"
+  }
 }
