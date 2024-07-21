@@ -240,9 +240,16 @@ binary_sensor:
 - platform: rego1000
   name: "Three-way valve"
   rego_listen_can_id: 0x00038${REGO_CAN_SUFFIX}
+
+# This sensor is active with 3kW additional heating. With 9kW this sensor as well as the 6kW sensor is active.
 - platform: rego1000
-  name: "Additional heat"
+  name: "3kW Additional heat"
   rego_listen_can_id: 0x0003c${REGO_CAN_SUFFIX}
+# This sensor is active with 6kW additional heating.
+- platform: rego1000
+  name: "6 kW Additional heat"
+  rego_listen_can_id: 0x0004c${REGO_CAN_SUFFIX}
+
 - platform: rego1000
   name: "Compressor"
   rego_listen_can_id: 0x00048${REGO_CAN_SUFFIX}
