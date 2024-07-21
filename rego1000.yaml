@@ -105,6 +105,8 @@ sensor:
     unit_of_measurement: °C
     state_class: measurement
     accuracy_decimals: 1
+  
+  # Cold fluid temperature sensors with action when passing below safe value
   - platform: rego1000
     name: Cold fluid out
     rego_variable: $GT11_TEMP
@@ -112,6 +114,10 @@ sensor:
     unit_of_measurement: °C
     state_class: measurement
     accuracy_decimals: 1
+    on_value_range:
+        - below: -7.8
+          then:
+          - switch.turn_on: ext1_block_compressor
   - platform: rego1000
     name: Heating start
     rego_variable: $HEATING_START
@@ -119,6 +125,12 @@ sensor:
     unit_of_measurement: °C
     state_class: measurement
     accuracy_decimals: 1
+    on_value_range:
+        - below: -5.8
+          then:
+          - switch.turn_on: ext1_block_compressor
+
+
   - platform: rego1000
     name: Heating stop
     rego_variable: $HEATING_STOP
@@ -269,3 +281,22 @@ switch:
 - platform: rego1000
   name: "Admin access"
   rego_variable: $ACCESS_LEVEL
+
+# Activate ESP32-EVB relay 1 connected to IVT External input 1 that is configured to block the compressor
+# The block is deactivated after 'delay' seconds
+- platform: gpio
+  pin: 32
+  name: "Ext1 block compressor"
+  id: ext1_block_compressor
+  icon: mdi:heat-pump-outline
+  on_turn_on:
+    then:
+      - delay: 3600s
+      - switch.turn_off: ext1_block_compressor
+
+# Activate ESP32-EVB relay 2 connected to IVT External input 2 that is configured to block the additional heater
+- platform: gpio
+  pin: 33
+  name: "Ext2 block add heater"
+  id: ext2_block_add_heater
+  icon: mdi:heating-coil
