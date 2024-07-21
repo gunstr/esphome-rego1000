@@ -176,6 +176,17 @@ sensor:
     - lambda: return x / 3600.0;
     accuracy_decimals: 2
 
+  # Sensor for total operational time of the compressor
+  - platform: template
+    id: op_time_compressor
+    name: opTime compressor
+    unit_of_measurement: h
+    state_class: "total_increasing"
+    device_class: "duration"
+    lambda: |-
+      return (id(op_time_compressor_heating).state + id(op_time_compressor_dwh).state);
+    update_interval: 60s
+
   # If this calculated sensor is used the COMPRESSOR_POWER should be set in the rego1000-vx.x.x.yaml file
   - platform: template
     id: energy_consumption_compressor
