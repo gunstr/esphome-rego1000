@@ -1,4 +1,5 @@
 esphome:
+  name: ivt-he-c7
   build_path: /home/gunnar/BuildFiles/esphome/build
 
 esp32:
@@ -12,10 +13,11 @@ ethernet:
   mdio_pin: GPIO18
   clk_mode: GPIO17_OUT
   phy_addr: 0
-  manual_ip:
-    static_ip: 192.168.0.21
-    gateway: 192.168.0.1
-    subnet: 255.255.255.0
+  # Use DHCP for now
+  # manual_ip:
+  #   static_ip: 192.168.0.21
+  #   gateway: 192.168.0.1
+  #   subnet: 255.255.255.0
 
 logger:
   level: INFO
