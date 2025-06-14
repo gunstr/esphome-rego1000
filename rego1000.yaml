@@ -324,10 +324,10 @@ switch:
   name: "Ext1 block compressor"
   id: ext1_block_compressor
   icon: mdi:heat-pump-outline
-  on_turn_on:
-    then:
-      - delay: 3600s
-      - switch.turn_off: ext1_block_compressor
+  # on_turn_on:
+  #   then:
+  #     - delay: 3600s
+  #     - switch.turn_off: ext1_block_compressor
 
 # Activate ESP32-EVB relay 2 connected to IVT External input 2 that is configured to block the additional heater
 - platform: gpio
