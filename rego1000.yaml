@@ -46,6 +46,10 @@ canbus:
     rx_pin: GPIO35
     bit_rate: 125kbps
 
+one_wire:
+  - platform: gpio
+    pin: GPIO4
+
 climate:
   - platform: rego1000
     name: House
@@ -245,6 +249,27 @@ sensor:
   # Esphome uptime sensor
   - platform: uptime
     name: Uptime Sensor
+    
+  # Temperature sensors on the tubes going to the old and new hole
+  - platform: dallas_temp
+    address: 0x1900000cab76e328    
+    name: "Brine Temp Out Long Loop"
+    id: brine_temp_out_long_loop
+  # Temperature sensors on the tubes going to the old and new hole
+  - platform: dallas_temp
+    address: 0xed00000ca907bf28    
+    name: "Brine Temp In Long Loop"
+    id: brine_temp_in_long_loop
+  - platform: dallas_temp
+    address: 0x8b00000cab56c728
+    name: "Brine Temp Out Short Loop"
+    id: brine_temp_out_short_loop
+  # Temperature sensors on the tubes going to the old and new hole
+  - platform: dallas_temp
+    address: 0x2500000caa06f428
+    name: "Brine Temp In Short Loop"
+    id: brine_temp_in_short_loop
+    
     
 binary_sensor:
 - platform: rego1000
