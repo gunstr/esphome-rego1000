@@ -11,7 +11,10 @@ ethernet:
   type: LAN8720
   mdc_pin: GPIO23
   mdio_pin: GPIO18
-  clk_mode: GPIO17_OUT
+  clk:
+    pin: GPIO17
+    mode: CLK_OUT
+  # power_pin: GPIOx # Not required for ESP32-EVB Rev K
   phy_addr: 0
   manual_ip:
     static_ip: 192.168.0.21
